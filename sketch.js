@@ -99,9 +99,9 @@ function setup() {
   frameRate(30);
 
   // --- GIF download button ---
-  const btn = createButton('Download GIF');
-  btn.position(10, heightCanvas + 10);
-  btn.mousePressed(startRecording);
+  // const btn = createButton('Download GIF');
+  // btn.position(10, heightCanvas + 10);
+  // btn.mousePressed(startRecording);
 
     // initialize target index
   targetYearIndex = yearIndex;
