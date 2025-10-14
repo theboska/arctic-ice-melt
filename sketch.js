@@ -137,7 +137,7 @@ function draw() {
 
   // --- handle transition progress toward targetYearIndex ---
   if (transitioning) {
-    transitionProgress += 0.05; // adjust speed as desired
+    transitionProgress += 0.07; // adjust speed as desired
     if (transitionProgress >= 1) {
       transitionProgress = 0;
       transitioning = false;
@@ -166,14 +166,20 @@ for (let i = 0; i < polygons.length; i++) {
   let floatX = 2 * sin(frameCount * 0.003 + i);
   let floatY = 1.5 * cos(frameCount * 0.004 + i * 1.5);
 
-  // Frosty fill color with subtle hue and brightness variation
-  let iceHue = 200 + noise(i * 0.1) * 30;
-  let iceBrightness = 220 + noise(i * 0.2) * 30;
-  fill(iceHue, iceBrightness, 255, 180);
+  // Simulate light direction from top-left (gives ice flakes a subtle 3D look)
+  let light = createVector(-0.5, -0.8).normalize();
+  let surfacenormal = createVector(Polycenter[0] - widthCanvas / 2, Polycenter[1] - heightCanvas / 2).normalize();
+  let brightness = map(light.dot(surfacenormal), -1, 1, 0.8, 1);
+let lightFactor = (light.dot(surfacenormal) + 1) / 2; // normalize 0–1
+    lightFactor = pow(lightFactor, 0.8); // soften curve
+let lightbrightness = map(lightFactor, 0, 1, 0.85, 1.05);
 
-  // Slightly glowing stroke
-  stroke(255, 255, 255, 100 + noise(i) * 100);
-  strokeWeight(1.5);
+  // Frosty semi-transparent fill with subtle bluish hue
+  fill(180 * brightness, 210 * brightness, 255, 180);
+
+// Edge shimmer outline
+stroke(240, 250, 255, 200);
+strokeWeight(1.3);
 
   beginShape();
   for (let j = 0; j < poly.length; j++) {
@@ -189,7 +195,42 @@ for (let i = 0; i < polygons.length; i++) {
     vertex(vx, vy);
   }
   endShape(CLOSE);
+
+  // Add crystalline edge shimmer
+let edgeBrightness = map(noise(i * 0.2, frameCount * 0.01), 0, 1, 180, 255);
+stroke(edgeBrightness, edgeBrightness, 255, 180);
+strokeWeight(0.8);
+noFill();
+beginShape();
+for (let j = 0; j < poly.length; j++) {
+  let [x, y] = poly[j];
+  let vx = Polycenter[0] + (x - Polycenter[0]) * shrinkScale;
+  let vy = Polycenter[1] + (y - Polycenter[1]) * shrinkScale;
+  vertex(vx, vy);
 }
+endShape(CLOSE);
+
+// --- Crystalline shimmer outline (safe version) ---
+push();
+noFill();
+
+// Make shimmer color vary subtly per flake
+let shimmerHue = map(noise(i * 0.2, frameCount * 0.01), 0, 1, 220, 255);
+stroke(shimmerHue, shimmerHue, 255, 180);
+strokeWeight(1);
+beginShape();
+
+for (let j = 0; j < polygons[i].length; j++) {
+  let [x, y] = polygons[i][j];
+  let vx = Polycenter[0] + (x - Polycenter[0]) * shrinkScale;
+  let vy = Polycenter[1] + (y - Polycenter[1]) * shrinkScale;
+  vertex(vx, vy);
+}
+
+endShape(CLOSE);
+pop();
+}
+
 
   // --- show year text ---
   fill(255);
