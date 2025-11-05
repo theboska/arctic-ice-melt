@@ -6,14 +6,20 @@
     <title>Arctic Ice Melt Visualization</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <div id="explanation">
-        <h2>Arctic Sea Ice Minimum Extent</h2>
+        <h2>A Heated Globe - Melting of the Arctic Ice</h2>
         <p>This visualization shows the decline in Arctic sea ice minimum extent from 1979 to 2024. The "ice flakes" shrink as the extent decreases.</p>
+        <p>Arctic Sea Ice Minimum levels refer to the amount of sea ice in the arctic during the warmest time of the year, usually september.</p>
+        <p>Arctic sea ice minimum levels are an important metric to track global warming. It also puts the life of animals such as polar bears and walruses at risk, who depend on the sea ice for survival.</p>
+        
     </div>
 
     <div id="canvas-wrapper">
@@ -26,7 +32,26 @@
         <button id="next-5-year" aria-label="Next 5 Years">5yr ▶▶</button>
     </div>
     
-    <p class="tooltip">Use ← and → arrows on your keyboard to jump one year<br>press ctrl ← and → to jump 5 years</p>
+    <p class="tooltip">Use ← and → arrows on your keyboard to jump one year<br>press ctrl ← or → to jump 5 years</p>
+
+    <footer>
+        <p>Data source: <a href="https://nsidc.org/data/seaice_index/" target="_blank" rel="noopener noreferrer">NSIDC Sea Ice Index</a></p>
+        <p>This project was created as a part of the Future Fridays workshop initiative by Data Visualization Society and Infogr8.</p>
+        <p>Created by Therese Bosrup</p>
+        <div class="social-icons">
+            <a href="https://github.com/theboska" aria-label="GitHub Profile" target="_blank">
+                <i class="fa-brands fa-github"></i>
+            </a>
+            <a href="https://instagram.com/unsupervised.dreams" aria-label="Instagram Profile" target="_blank">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+<a href="https://bsky.app/profile/theboska.bsky.social" aria-label="Bluesky Profile" target="_blank" class="svg-icon-link">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor">
+        <path d="M304 160c-22.1 0-40-17.9-40-40s17.9-40 40-40s40 17.9 40 40s-17.9 40-40 40zM80 320c0 35.3 28.7 64 64 64s64-28.7 64-64s-28.7-64-64-64s-64 28.7-64 64zm48 0c0-8.8 7.2-16 16-16s16 7.2 16 16s-7.2 16-16 16s-16-7.2-16-16zm288-64c-35.3 0-64 28.7-64 64s28.7 64 64 64s64-28.7 64-64s-28.7-64-64-64zm-16 64c0 8.8-7.2 16-16 16s-16-7.2-16-16s7.2-16 16-16s16 7.2 16 16zM256 320c0 35.3 28.7 64 64 64s64-28.7 64-64s-28.7-64-64-64s-64 28.7-64 64zm48 0c0-8.8 7.2-16 16-16s16 7.2 16 16s-7.2 16-16 16s-16-7.2-16-16zM432 128c-35.3 0-64 28.7-64 64s28.7 64 64 64s64-28.7 64-64s-28.7-64-64-64zm-16 64c0 8.8-7.2 16-16 16s-16-7.2-16-16s7.2-16 16-16s16 7.2 16 16zM144 80c-22.1 0-40 17.9-40 40s17.9 40 40 40s40-17.9 40-40s-17.9-40-40-40zM224 432c-35.3 0-64 28.7-64 64H352c0-35.3-28.7-64-64-64s-64 0-64 0z"/>
+    </svg>
+</a>
+        </div>
+    </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.9.0/p5.min.js"></script>

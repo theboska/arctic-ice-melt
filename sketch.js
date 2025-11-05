@@ -128,7 +128,7 @@ function draw() {
 
   // --- Smooth year transitions ---
   if (transitioning) {
-    transitionProgress += 0.03; // speed per mini-transition EDIT HERE IF TOO FAST
+    transitionProgress += 0.06; // speed per mini-transition EDIT HERE IF TOO FAST
     if (transitionProgress >= 1) {
       transitionProgress = 0;
       yearIndex = (yearIndex + transitionDirection + years.length) % years.length;
