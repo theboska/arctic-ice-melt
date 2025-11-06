@@ -359,13 +359,20 @@ function centroid(poly) {
 
 // --- ADD THIS ENTIRE FUNCTION ---
 function updateButtonVisibility() {
-  // Use p5.js .style() to show/hide
+  // Add/remove 'inactive-btn' class
   if (prevBtnElement) {
-    // Show button if yearIndex is 1 or more
-    prevBtnElement.style('display', (yearIndex > 0) ? '' : 'none');
+    if (yearIndex > 0) {
+      prevBtnElement.removeClass('inactive-btn');
+    } else {
+      prevBtnElement.addClass('inactive-btn');
+    }
   }
+
   if (prev5BtnElement) {
-    // Show button if yearIndex is 5 or more
-    prev5BtnElement.style('display', (yearIndex >= 5) ? '' : 'none');
+    if (yearIndex >= 5) {
+      prev5BtnElement.removeClass('inactive-btn');
+    } else {
+      prev5BtnElement.addClass('inactive-btn');
+    }
   }
 }

@@ -169,3 +169,10 @@ footer a:hover {
         font-size: 2.2rem; /* Make heading larger */
     }
 }
+
+/* --- Styling for inactive buttons --- */
+.inactive-btn {
+    opacity: 0.4;
+    cursor: default;
+    pointer-events: none; /* Makes the button unclickable */
+}
